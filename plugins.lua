@@ -52,7 +52,24 @@ local plugins = {
   --   "NvChad/nvim-colorizer.lua",
   --   enabled = false
   -- },
-
+  {
+    "TimUntersberger/neogit",
+    lazy = false,
+    config = function()
+      local neogit = require('neogit')
+      neogit.setup {}
+    end,
+  },
+  {
+    "phaazon/hop.nvim",
+    lazy = false,
+    config = function()
+      require("hop").setup({
+        keys = 'etovxqpdygfblzhckisuran',
+        quit_key = '<SPC>',
+      })
+    end,
+  },
 }
 
 return plugins
