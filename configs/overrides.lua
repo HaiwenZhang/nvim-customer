@@ -15,6 +15,8 @@ M.treesitter = {
     "python",
     "cpp",
     "cuda",
+    "latex",
+    "bibtex",
   },
   indent = {
     enable = true,
@@ -43,7 +45,10 @@ M.mason = {
     "clang-format",
 
     -- python stuff
-    "pyright"
+    "pyright",
+
+    -- LaTeX stuff
+    "texlab",
   },
 }
 
