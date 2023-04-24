@@ -49,6 +49,9 @@ M.mason = {
 
     -- LaTeX stuff
     "texlab",
+
+    -- Rust stuff
+    "rust-analyzer",
   },
 }
 
