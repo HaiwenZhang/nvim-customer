@@ -21,6 +21,17 @@ M.neogit = {
   },
 }
 
+M.nvterm = {
+  n = {
+    ["<leader>tt"] = {
+      function()
+        require("nvterm.terminal").toggle "float"
+      end,
+      "toggle floating term",
+    },
+  }
+}
+
 -- more keybinds!
 
 return M
