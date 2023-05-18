@@ -31,7 +31,6 @@ M.nvterm = {
     },
   }
 }
-
 -- more keybinds!
 
 return M

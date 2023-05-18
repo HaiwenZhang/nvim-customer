@@ -32,7 +32,10 @@ local plugins = {
     "nvim-treesitter/nvim-treesitter",
     opts = overrides.treesitter,
   },
-
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    lazy = false,
+  },
   {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
@@ -52,6 +55,13 @@ local plugins = {
   --   "NvChad/nvim-colorizer.lua",
   --   enabled = false
   -- },
+  {
+    "rmagatti/goto-preview",
+    config = function()
+      local goto_preview = require('goto-preview')
+      goto_preview.setup {}
+    end,
+  },
   {
     "TimUntersberger/neogit",
     lazy = false,
