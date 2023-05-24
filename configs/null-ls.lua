@@ -27,6 +27,9 @@ local opts = {
     -- cp & cpp
     b.formatting.clang_format,
 
+    -- LaTeX
+    b.formatting.latexindent,
+
     b.formatting.prettier.with {
       filetypes = {
         "html",
@@ -39,6 +42,7 @@ local opts = {
         "python",
         "cpp",
         "c",
+        "latex",
       },
     }, -- so prettier works only on these filetypes
   },
