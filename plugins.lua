@@ -1,4 +1,4 @@
-local overrides = require("custom.configs.overrides")
+local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -25,7 +25,7 @@ local plugins = {
   -- override plugin configs
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason
+    opts = overrides.mason,
   },
 
   {
@@ -58,7 +58,7 @@ local plugins = {
   {
     "rmagatti/goto-preview",
     config = function()
-      local goto_preview = require('goto-preview')
+      local goto_preview = require "goto-preview"
       goto_preview.setup {}
     end,
   },
@@ -66,7 +66,7 @@ local plugins = {
     "TimUntersberger/neogit",
     lazy = false,
     config = function()
-      local neogit = require('neogit')
+      local neogit = require "neogit"
       neogit.setup {}
     end,
   },
@@ -74,10 +74,10 @@ local plugins = {
     "phaazon/hop.nvim",
     lazy = false,
     config = function()
-      require("hop").setup({
-        keys = 'etovxqpdygfblzhckisuran',
-        quit_key = '<SPC>',
-      })
+      require("hop").setup {
+        keys = "etovxqpdygfblzhckisuran",
+        quit_key = "<SPC>",
+      }
     end,
   },
   {
@@ -85,19 +85,56 @@ local plugins = {
     ft = "rust",
     init = function()
       vim.g.rustfmt_autosave = 1
-    end
+    end,
   },
   -- {
-    -- "simrat39/rust-tools.nvim",
-    -- ft = "rust",
-    -- dependencies = "neovim/nvim-lspconfig",
-    -- opts = function()
-      -- return require "custom.configs.rust-tools"
-    -- end,
-    -- config = function (_, opts)
-      -- require('rust-tools').setup(opts)
-    -- end
+  -- "simrat39/rust-tools.nvim",
+  -- ft = "rust",
+  -- dependencies = "neovim/nvim-lspconfig",
+  -- opts = function()
+  -- return require "custom.configs.rust-tools"
+  -- end,
+  -- config = function (_, opts)
+  -- require('rust-tools').setup(opts)
+  -- end
   -- }
+  {
+    "mfussenegger/nvim-dap",
+    enabled = vim.fn.has "win32" == 0,
+    dependencies = {
+      {
+        "jay-babu/mason-nvim-dap.nvim",
+        dependencies = { "nvim-dap" },
+        cmd = { "DapInstall", "DapUninstall" },
+        opts = { handlers = {} },
+      },
+      {
+        "rcarriga/nvim-dap-ui",
+        opts = { floating = { border = "rounded" } },
+        config = require "custom.configs.nvim-dap-ui",
+      },
+      {
+        "rcarriga/cmp-dap",
+        dependencies = { "nvim-cmp" },
+        config = require "custom.configs.cmp-dap",
+      },
+    },
+  },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
+  },
 }
 
 return plugins
