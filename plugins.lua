@@ -135,6 +135,28 @@ local plugins = {
       "rcarriga/nvim-notify",
     },
   },
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end,
+  },
+  {
+    "gelguy/wilder.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    event = "VeryLazy",
+    config = require "custom.configs.wilder",
+  },
+  {
+    "Bekaboo/dropbar.nvim",
+    config = require "custom.configs.dropbar",
+  },
 }
 
 return plugins
