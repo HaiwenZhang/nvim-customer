@@ -22,3 +22,6 @@ if vim.g.neovide then
   vim.g.neovide_background_color = "#0f1117" .. alpha()
   vim.g.neovide_cursor_vfx_mode = "torpedo"
 end
+
+vim.lsp.handlers["textDocument/hover"] = false
+vim.lsp.handlers["textDocument/signatureHelp"] = false
