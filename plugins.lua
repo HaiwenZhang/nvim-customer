@@ -172,6 +172,18 @@ local plugins = {
       --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
     },
+    config = function()
+      require("noice").setup({
+        lsp = {
+          hover = {
+            enabled = false,
+          },
+          signature = {
+            enabled = false,
+          }
+        }
+      })
+    end
   },
   {
     "kylechui/nvim-surround",
