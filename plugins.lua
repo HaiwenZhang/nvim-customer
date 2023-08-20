@@ -15,13 +15,20 @@ local plugins = {
           return require "custom.configs.null-ls"
         end,
       },
+{
+  "j-hui/fidget.nvim",
+  tag = "legacy",
+  event = "LspAttach",
+  opts = {
+    -- options
+  },
+},
     },
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
     end, -- Override to setup mason-lspconfig
   },
-
   -- override plugin configs
   {
     "williamboman/mason.nvim",
