@@ -2,7 +2,6 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
-
   -- Override plugin definition options
 
   {
@@ -15,14 +14,14 @@ local plugins = {
           return require "custom.configs.null-ls"
         end,
       },
-{
-  "j-hui/fidget.nvim",
-  tag = "legacy",
-  event = "LspAttach",
-  opts = {
-    -- options
-  },
-},
+      {
+        "j-hui/fidget.nvim",
+        tag = "legacy",
+        event = "LspAttach",
+        opts = {
+          -- options
+        },
+      },
     },
     config = function()
       require "plugins.configs.lspconfig"
@@ -126,24 +125,6 @@ local plugins = {
     },
   },
   {
-    "rust-lang/rust.vim",
-    ft = "rust",
-    init = function()
-      vim.g.rustfmt_autosave = 1
-    end,
-  },
-  -- {
-  -- "simrat39/rust-tools.nvim",
-  -- ft = "rust",
-  -- dependencies = "neovim/nvim-lspconfig",
-  -- opts = function()
-  -- return require "custom.configs.rust-tools"
-  -- end,
-  -- config = function (_, opts)
-  -- require('rust-tools').setup(opts)
-  -- end
-  -- }
-  {
     "mfussenegger/nvim-dap",
     enabled = vim.fn.has "win32" == 0,
     dependencies = {
@@ -151,7 +132,21 @@ local plugins = {
         "jay-babu/mason-nvim-dap.nvim",
         dependencies = { "nvim-dap" },
         cmd = { "DapInstall", "DapUninstall" },
-        opts = { handlers = {} },
+        opts = {
+          -- Makes a best effort to setup the various debuggers with
+          -- reasonable debug configurations
+          automatic_installation = true,
+
+          -- You can provide additional configuration to the handlers,
+          -- see mason-nvim-dap README for more information
+          handlers = {},
+
+          -- You'll need to check that you have the required things installed
+          -- online, please don't ask me how to install them :)
+          ensure_installed = {
+            -- Update this to ensure that you have the debuggers for the langs you want
+          },
+        },
       },
       {
         "rcarriga/nvim-dap-ui",
@@ -162,6 +157,10 @@ local plugins = {
         "rcarriga/cmp-dap",
         dependencies = { "nvim-cmp" },
         config = require "custom.configs.cmp-dap",
+      },
+      {
+        "theHamsta/nvim-dap-virtual-text",
+        opts = {},
       },
     },
   },
@@ -180,17 +179,17 @@ local plugins = {
       "rcarriga/nvim-notify",
     },
     config = function()
-      require("noice").setup({
+      require("noice").setup {
         lsp = {
           hover = {
             enabled = false,
           },
           signature = {
             enabled = false,
-          }
-        }
-      })
-    end
+          },
+        },
+      }
+    end,
   },
   {
     "kylechui/nvim-surround",
@@ -203,16 +202,18 @@ local plugins = {
     end,
   },
   {
-    "gelguy/wilder.nvim",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    event = "VeryLazy",
-    config = require "custom.configs.wilder",
-  },
-  {
     "Bekaboo/dropbar.nvim",
     config = require "custom.configs.dropbar",
+  },
+  {
+    "echasnovski/mini.indentscope",
+    version = false, -- wait till new 0.7.0 release to put it back on semver
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      -- symbol = "▏",
+      symbol = "│",
+      options = { try_as_border = true },
+    },
   },
 }
 

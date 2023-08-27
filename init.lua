@@ -6,7 +6,7 @@
 --   command = "tabdo wincmd =",
 -- })
 --
-
+vim.wo.relativenumber = true
 -- neovide settings
 
 if vim.g.neovide then
