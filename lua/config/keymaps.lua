@@ -32,3 +32,11 @@ keymap.set("n", "sh", "<C-w>h")
 keymap.set("n", "sk", "<C-w>k")
 keymap.set("n", "sj", "<C-w>j")
 keymap.set("n", "sl", "<C-w>l")
+
+-- navigate within insert mode
+keymap.set("i", "<C-a>", "<ESC>^i")
+keymap.set("i", "<C-e>", "<End>")
+keymap.set("i", "<C-h>", "<Left>")
+keymap.set("i", "<C-l>", "<Right>")
+keymap.set("i", "<C-j>", "<Down>")
+keymap.set("i", "<C-k>", "<Up>")
