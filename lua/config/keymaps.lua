@@ -38,5 +38,8 @@ keymap.set("i", "<C-a>", "<ESC>^i")
 keymap.set("i", "<C-e>", "<End>")
 keymap.set("i", "<C-h>", "<Left>")
 keymap.set("i", "<C-l>", "<Right>")
-keymap.set("i", "<C-j>", "<Down>")
-keymap.set("i", "<C-k>", "<Up>")
+
+-- Diagnostics
+keymap.set("n", "<C-j>", function()
+  vim.diagnostic.goto_next()
+end, opts)

@@ -1,5 +1,9 @@
 return {
 
+  {
+    "nvim-lualine/lualine.nvim",
+    enabled = false,
+  },
   -- messages, cmdline and the popupmenu
   {
     "folke/noice.nvim",
